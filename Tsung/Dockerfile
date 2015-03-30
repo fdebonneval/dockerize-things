@@ -7,6 +7,10 @@
 FROM ubuntu:12.04
 MAINTAINER Foucault de Bonneva <foucault@commit.ninja>
 
+ADD start-bench /usr/sbin
+ADD tsung.xml /root/.tsung
+
+RUN chmod +x /usr/sbin/start-bench
 RUN apt-get update && apt-get install -y openssh-server tsung
 RUN mkdir /var/run/sshd
 RUN mkdir /root/.tsung
@@ -14,9 +18,7 @@ RUN mkdir /root/.tsung
 RUN ssh-keygen -b 1024 -N '' -f ~/.ssh/id_dsa -t dsa -q
 RUN cat /root/.ssh/id_dsa.pub > /root/.ssh/authorized_keys
 
-ADD start-bench /usr/sbin
-ADD tsung.xml /root/.tsung
 
 VOLUME ["/root/.tsung/log"]
 
-
+CMD ["/usr/sbin/start-bench"]

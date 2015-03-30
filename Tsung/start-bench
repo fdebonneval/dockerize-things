@@ -8,7 +8,7 @@ sed -i \
     -e "s#TARGETPORT#${TARGETPORT}#g" \
     /root/.tsung/tsung.xml
 
-LOGDIR=$(/usr/bin/tsung -f /root/.tsung/tsung.xml | grep "Log directory is" | awk {'print $4'})
+LOGDIR=$(/usr/bin/tsung -f /root/.tsung/tsung.xml start | grep "Log directory is" | awk {'print $4'})
 
 cd $LOGDIR && \
     /usr/lib/tsung/bin/tsung_stats.pl
