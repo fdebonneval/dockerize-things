@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Starting sshd insode the container
+/usr/sbin/sshd
+
+LOGDIR=$(/usr/bin/tsung -f /root/.tsung/tsung.xml | grep "Log directory is" | awk {'print $4'})
+
+cd $LOGDIR && \
+    /usr/lib/tsung/bin/tsung_stats.pl
+
