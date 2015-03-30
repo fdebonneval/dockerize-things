@@ -9,7 +9,7 @@
  
     <!-- Configuration du serveur -->
     <servers>
-        <server host="84.39.63.183" port="80" type="tcp"></server>
+        <server host="TARGETHOST" port="TARGETPORT" type="tcp"></server>
     </servers>
  
     <!-- phases d'arrivée, 3 paliers de 10 minutes où l'on augmente la fréquence d'arrivée de 1 puis 10 puis 30 visiteurs par seconde -->
